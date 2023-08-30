@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: aswinramaswamy-poi-map-app-dev
+  annotations:
+    argocd/app-name: aswinramaswamy-poi-map-app-dev
+    backstage.io/kubernetes-id: aswinramaswamy-poi-map-app
+    backstage.io/kubernetes-namespace: aswinramaswamy
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh-deploy/aswinramaswamy-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.a1jxqhzp.eastus2.aroapp.io/dev-pipelines/ns/aswinramaswamy/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.a1jxqhzp.eastus2.aroapp.io/k8s/ns/aswinramaswamy/deployments/aswinramaswamy-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.a1jxqhzp.eastus2.aroapp.io/#https://github.com/rhdh-deploy/aswinramaswamy-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://aswinramaswamy-poi-map-app-aswinramaswamy.apps.a1jxqhzp.eastus2.aroapp.io
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/aswinramaswamy"
+  system: workshop-system-aswinramaswamy
+  consumesApis:
+    - gateway-api-aswinramaswamy
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-aswinramaswamy
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/aswinramaswamy"
